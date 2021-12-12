@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 
 const contactSchema = mongoose.Schema({
-    _id: mongoose.Types.ObjectId,
+    _id: mongoose.Schema.Types.ObjectId,
     name: {type: String, required: true},
     email: {type: String, required: true},
     mailingAddress: {type: String},
