@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken')
 
 const User = require("../models/user")
 
-const SECRETKEY = process.env.SECRETKEY || "supsersecretKey";
+const SECRETKEY = process.env.SECRETKEY || "supersecretKey";
 
 const login = async (req, res) => {
     const {username, email, password} = req.body;
@@ -37,7 +37,7 @@ const signup = async (req, res) => {
             return res.status(400).json({message: `user already exists`});
         
         const hashedPassword = await bcrypt(password, 10)
-        const createdUser = await User.create({username, email, hashedPassword})
+        const createdUser = await User.create({username, email, password: hashedPassword})
         
         const token = generateAccessToken(createdUser);
 
