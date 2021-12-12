@@ -1,13 +1,14 @@
 const mongoose = require('mongoose')
 
 const contactSchema = mongoose.Schema({
-    name: String,
-    email: String,
-    mailingAddress: String,
+    _id: mongoose.Types.ObjectId,
+    name: {type: String, required: true},
+    email: {type: String, required: true},
+    mailingAddress: {type: String},
     phoneNumber: {
-        home: String,
-        work: String,
-        other: String
+        home: {type: String},
+        work: {type: String},
+        other: {type: String}
     },
     createdAt: {
         type: Date,

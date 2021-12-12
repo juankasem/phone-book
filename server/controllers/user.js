@@ -48,7 +48,7 @@ const signup = async (req, res) => {
 }
 
 const generateAccessToken = (user) => {
-    return jwt.sign({ email: user.email, id: user._id }, SECRETKEY, {expiresIn: "1h"} )
+    return jwt.sign({ email: user.email, _id: user._id }, SECRETKEY, {expiresIn: "1h"} )
 }
 
 module.exports= {
