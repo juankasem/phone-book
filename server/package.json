@@ -1,0 +1,22 @@
+{
+  "name": "phone-book",
+  "version": "1.0.0",
+  "description": "A test project to build a web api app within Node.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/juankasem/phone-book.git"
+  },
+  "keywords": [
+    "phone-book"
+  ],
+  "author": "Juan Kasem",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/juankasem/phone-book/issues"
+  },
+  "homepage": "https://github.com/juankasem/phone-book#readme"
+}
