@@ -12,9 +12,10 @@ const login = async (req, res) => {
         const loggedinUser = await User.findOne({username, email})
 
         if(!loggedinUser)
-            return res.status(404).json({message: `No user found with this username or email:${email}`});
+            return res.status(404).json({message: 'user not found'});
 
         const validPassword = await bcrypt.compare(password, loggedinUser.password);
+
         if(!validPassword)
            return res.status(401).json({message: 'Invalid password'});
         
@@ -36,7 +37,7 @@ const signup = async (req, res) => {
         if(existingUser)
             return res.status(400).json({message: `user already exists`});
         
-        const hashedPassword = await bcrypt(password, 10);
+        const hashedPassword = await bcrypt.hash(password, 10);
         const createdUser = await User.create({_id: new mongoose.Types.ObjectId(), 
                                                username,
                                                email, 
