@@ -1,3 +1,4 @@
+const mongoose = require('mongoose')
 const Contact = require("../models/contact")
 
 const getContacts = async (req, res) => {
@@ -51,7 +52,7 @@ const updateContact = async (req, res) => {
      }
 }
   
-const deleteContact = (req, res) => {
+const deleteContact = async (req, res) => {
     const {id} = req.params
     
     if (!mongoose.Types.ObjectId.isValid(id))    
