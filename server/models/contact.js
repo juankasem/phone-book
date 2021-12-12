@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const contactSchema = mongoose.Schema({
     name: String,
     email: String,
-    mailingAddress: SVGAnimatedTransformList,
+    mailingAddress: String,
     phoneNumber: {
         home: String,
         work: String,
@@ -15,6 +15,6 @@ const contactSchema = mongoose.Schema({
     }
 })
 
-const contact = mongoose.model('Contact', contactSchema)
+const Contact = mongoose.model('Contact', contactSchema)
 
-module.exports = contact;
+module.exports = Contact;
