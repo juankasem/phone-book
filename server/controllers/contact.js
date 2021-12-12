@@ -24,11 +24,11 @@ const getContactById = async (req, res) => {
 const createContact = async (req, res) => {
     const {name, email, mailingAddress, phoneNumber} = req.body;
 
-    const newContact = new Contact({name, email, mailingAddress, phoneNumber})
 
     try {
-        await newContact.save();
-        res.status(201).json(newContact);
+        const createdContact = await Contact.create({name, email, mailingAddress, phoneNumber})
+
+        res.status(201).json({result: createdContact});
     } catch (error) {
         res.status(400).json({message: error.message})
     }
