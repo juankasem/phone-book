@@ -31,9 +31,12 @@ const getContactById = async (req, res) => {
 const createContact = async (req, res) => {
     const {name, email, mailingAddress, phoneNumber} = req.body;
 
-
     try {
-        const createdContact = await Contact.create({name, email, mailingAddress, phoneNumber})
+        const createdContact = await Contact.create({_id: new mongoose.Types.ObjectId(),
+                                                      name,
+                                                      email,
+                                                      mailingAddress, 
+                                                      phoneNumber})
 
         res.status(201).json({result: createdContact});
     } catch (error) {
