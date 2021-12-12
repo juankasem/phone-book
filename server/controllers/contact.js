@@ -2,9 +2,16 @@ const mongoose = require('mongoose')
 const Contact = require("../models/contact")
 
 const getContacts = async (req, res) => {
+    const {page} = req.query
+
     try {
-        const contacts = await Contact.find();
-        res.status(200).json(contacts)
+        const docsPerPage = 10;
+        const startIndex = (Number(page) - 1) * numOfDocs; // get the starting index of every page
+
+        const totalDocs = await PostMessage.countDocuments({});
+        const contacts = await Contact.find().sort({ _id: -1}).limit(docsPerPage).skip(startIndex);
+
+        res.status(200).json({data: contacts, currentPage: Number(page), NumOfPages: Math.ceil(totalDocs/docsPerPage)});
     } 
     catch (error) {
         res.status(404).json({message: error.message})
